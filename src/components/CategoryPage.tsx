@@ -9,27 +9,48 @@ interface CategoryPageProps {
   title: string;
   description: string;
   icon: LucideIcon;
+  /** Optional backdrop image for the heading area only (path from public folder, e.g. /images/politics-hero.jpg) */
+  backdropImage?: string;
 }
 
-const CategoryPage = ({ category, title, description, icon: Icon }: CategoryPageProps) => {
+const CategoryPage = ({ category, title, description, icon: Icon, backdropImage }: CategoryPageProps) => {
   const markets = getMarketsByCategory(category);
 
   return (
     <MainLayout>
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
+        {/* Header / Hero - half-area backdrop when image provided */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className={`relative mb-8 overflow-hidden rounded-2xl ${
+            backdropImage ? 'min-h-[50vh] flex flex-col justify-end pb-8 pt-12' : ''
+          }`}
+          style={
+            backdropImage
+              ? {
+                  backgroundImage: `url(${backdropImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }
+              : undefined
+          }
         >
-          <div className="flex items-center gap-3 mb-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
-              <Icon className="h-5 w-5 text-primary" />
+          {backdropImage && (
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40"
+              aria-hidden
+            />
+          )}
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20">
+                <Icon className="h-5 w-5 text-primary" />
+              </div>
+              <h1 className="font-display text-3xl font-bold text-foreground">{title}</h1>
             </div>
-            <h1 className="font-display text-3xl font-bold text-foreground">{title}</h1>
+            <p className="text-muted-foreground max-w-2xl">{description}</p>
           </div>
-          <p className="text-muted-foreground">{description}</p>
         </motion.div>
 
         {/* Markets Grid */}

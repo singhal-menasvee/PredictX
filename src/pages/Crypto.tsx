@@ -8,6 +8,7 @@ const Crypto = () => {
       title="Crypto"
       description="Trade on cryptocurrency prices, adoption milestones, and market events."
       icon={Bitcoin}
+      backdropImage="/images/crypto-hero.jpg"
     />
   );
 };

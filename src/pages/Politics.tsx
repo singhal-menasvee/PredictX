@@ -8,6 +8,7 @@ const Politics = () => {
       title="Politics"
       description="Trade on elections, policy decisions, and political events worldwide."
       icon={Vote}
+      backdropImage="/images/politics-hero.jpg"
     />
   );
 };

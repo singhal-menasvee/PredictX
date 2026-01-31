@@ -8,6 +8,7 @@ const Finance = () => {
       title="Finance"
       description="Predict interest rates, market movements, and economic indicators."
       icon={TrendingUp}
+      backdropImage="/images/finance-hero.jpg"
     />
   );
 };

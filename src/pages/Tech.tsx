@@ -8,6 +8,7 @@ const Tech = () => {
       title="Tech"
       description="Trade on product launches, company milestones, and tech breakthroughs."
       icon={Cpu}
+      backdropImage="/images/tech-hero.jpg"
     />
   );
 };

@@ -8,6 +8,7 @@ const Sports = () => {
       title="Sports"
       description="Bet on championships, player awards, and major sporting events."
       icon={Trophy}
+      backdropImage="/images/sports-hero.jpg"
     />
   );
 };
